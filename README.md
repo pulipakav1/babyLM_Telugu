@@ -1,4 +1,4 @@
-# babyLM_Telugu
+# babyLM_Telugu (small-scale)
 This project contains work on training a BabyLM (small transformer-based language model) for Telugu using **Curriculum Learning** and **Child-Directed Speech** strategies. Telugu is a low-resource Dravidian language, and our goal is to explore methods that improve model efficiency and accuracy with limited data.
 
 # Data

@@ -1,8 +1,29 @@
-# babyLM_Telugu (small-scale) - An "Special Topics in NLP" Class Project
+# babyLM_Telugu (small-scale) - A "Special Topics in NLP" Class Project
+
 This project contains work on training a BabyLM (small transformer-based language model) for Telugu using **Curriculum Learning** and **Child-Directed Speech** strategies. Telugu is a low-resource Dravidian language, and our goal is to explore methods that improve model efficiency and accuracy with limited data.
 
-# Data
-The data is sourced from news texts, telugu learning textbooks for kids and GPT generated Child-directed sentences. 
+## Project Structure
+
+```
+babyLM_Telugu/
+├── README.md
+├── .gitattributes
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── notebooks/
+│   ├── BabyLM_Telugu_model.ipynb   # Model training and evaluation
+│   └── Sentence_Scoring.ipynb      # Sentence scoring and curriculum ordering
+└── data/
+    ├── child_directed_telugu_1Lakh.zip    # ~1 Lakh child-directed sentences
+    ├── curriculum_learning_telugu_1M.zip  # 1M curriculum-ordered sentences
+    └── Documents.zip                      # Supporting documents
+```
+
+## Data
+
+The data is sourced from news texts, Telugu learning textbooks for kids, and GPT-generated child-directed sentences.
+
 - **Corpus Size**: ~447,000 Telugu sentences
 - **Scoring**:
   - **Sentence Length**: Shorter sentences considered easier
@@ -10,8 +31,8 @@ The data is sourced from news texts, telugu learning textbooks for kids and GPT 
 - **Curriculum Ordering**: Sentences sorted from easy to hard using a scoring function
 - **Tokenization**: Basic word-level tokenizer used for all training setups
 
+## Overview
 
-# Overview
 - **Curriculum Learning:** Ordered data from easy to difficult based on sentence length and word rarity.
 - **Child-Directed Data:** Simpler, early-learning Telugu sentences.
 - **Random Baseline:** For comparison with traditional training approaches.
@@ -20,7 +41,8 @@ The data is sourced from news texts, telugu learning textbooks for kids and GPT 
   - Validation Perplexity
   - Minimal Pair Grammar Testing (correct vs. incorrect Telugu sentences)
 
-# Model
+## Model
+
 - **Architecture**: Small transformer (BabyLM-style)
 - **Tokenizer**: Word-level (no BPE or subword)
 - **Training Variants**:
@@ -31,17 +53,16 @@ The data is sourced from news texts, telugu learning textbooks for kids and GPT 
   - **Validation Perplexity** (lower is better)
   - **Minimal Pair Accuracy** (grammatical correctness preference)
 
-# Findings 
-## 📈 Results
+## Findings
 
-| Model           | Validation Perplexity | Minimal Pair Accuracy  |
-|---------------- |-----------------------|------------------------|
-| **Curriculum**  | **13.47**             | **86%**                |
-| Child-Directed  | 18.07                 | 72%                    |
-| Random          | 62.64                 | 59%                    |
+### Results
+
+| Model          | Validation Perplexity | Minimal Pair Accuracy |
+|----------------|-----------------------|-----------------------|
+| **Curriculum** | **13.47**             | **86%**               |
+| Child-Directed | 18.07                 | 72%                   |
+| Random         | 62.64                 | 59%                   |
 
 ✅ **Curriculum-based training** achieved the **lowest perplexity (13.47)** and the highest grammatical accuracy (86%), proving most effective.  
 ✅ **Child-directed data** also led to significant improvements over the random approach.  
 ❌ **Random training** produced the **highest perplexity (62.64)**, confirming inefficient learning.
-
-
